@@ -18,6 +18,22 @@ namespace EntityFRFirst
                 {
                     Console.WriteLine(stopReason.intStopReason + " " + stopReason.strReason);
                 }
+
+                //zapolnenie
+                //TablesStopReason sr = new TablesStopReason();
+                //sr.strReason = "Ой! всё!";
+                //db.TablesStopReasons.Add(sr);
+                //db.SaveChanges();
+
+                //izmenenie
+                TablesStopReason sr = db.TablesStopReasons.Find(1);
+                sr.strReason = "-*-";
+                db.SaveChanges();
+
+                //udalenie
+                db.TablesStopReasons.Remove(sr);
+                db.SaveChanges();
+
             }
         }
     }

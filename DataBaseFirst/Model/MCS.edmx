@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище CRCMS_newModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccessTab">
+          <Key>
+            <PropertyRef Name="TabId" />
+          </Key>
+          <Property Name="TabId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TabName" Type="nvarchar" MaxLength="255" />
+          <Property Name="GroupId" Type="int" />
+        </EntityType>
+        <EntityType Name="AccessUser">
+          <Key>
+            <PropertyRef Name="AccessID" />
+          </Key>
+          <Property Name="AccessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Create" Type="datetime" />
+          <Property Name="TabId" Type="int" />
+        </EntityType>
+        <EntityType Name="Areas">
+          <Key>
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="AreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeArea" Type="int" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="NoSplit" Type="bit" />
+          <Property Name="AssemblyArea" Type="bit" />
+          <Property Name="FullName" Type="nvarchar(max)" />
+          <Property Name="MultipleOrders" Type="bit" />
+          <Property Name="HiddenArea" Type="bit" />
+          <Property Name="IP" Type="nvarchar(max)" />
+          <Property Name="PavilionId" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="OrderExecution" Type="int" />
+          <Property Name="Dependence" Type="int" />
+          <Property Name="WorkingPeople" Type="int" />
+          <Property Name="ComponentTypeId" Type="int" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="Segment" Type="int" />
+        </EntityType>
+        <EntityContainer Name="Хранилище CRCMS_newModelContainer">
+          <EntitySet Name="AccessTab" EntityType="Self.AccessTab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccessUser" EntityType="Self.AccessUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CRCMS_newModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccessTab">
+          <Key>
+            <PropertyRef Name="TabId" />
+          </Key>
+          <Property Name="TabId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TabName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GroupId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AccessUser">
+          <Key>
+            <PropertyRef Name="AccessID" />
+          </Key>
+          <Property Name="AccessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Create" Type="DateTime" Precision="3" />
+          <Property Name="TabId" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="CRCMS_newEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccessTabs" EntityType="Self.AccessTab" />
+          <EntitySet Name="AccessUsers" EntityType="Self.AccessUser" />
+          <EntitySet Name="Areas" EntityType="CRCMS_newModel.Area" />
+        </EntityContainer>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="AreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeArea" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="NoSplit" Type="Boolean" />
+          <Property Name="AssemblyArea" Type="Boolean" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MultipleOrders" Type="Boolean" />
+          <Property Name="HiddenArea" Type="Boolean" />
+          <Property Name="IP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PavilionId" Type="Int32" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="OrderExecution" Type="Int32" />
+          <Property Name="Dependence" Type="Int32" />
+          <Property Name="WorkingPeople" Type="Int32" />
+          <Property Name="ComponentTypeId" Type="Int32" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="Segment" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище CRCMS_newModelContainer" CdmEntityContainer="CRCMS_newEntities">
+          <EntitySetMapping Name="AccessTabs">
+            <EntityTypeMapping TypeName="CRCMS_newModel.AccessTab">
+              <MappingFragment StoreEntitySet="AccessTab">
+                <ScalarProperty Name="TabId" ColumnName="TabId" />
+                <ScalarProperty Name="TabName" ColumnName="TabName" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccessUsers">
+            <EntityTypeMapping TypeName="CRCMS_newModel.AccessUser">
+              <MappingFragment StoreEntitySet="AccessUser">
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Create" ColumnName="Create" />
+                <ScalarProperty Name="TabId" ColumnName="TabId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="CRCMS_newModel.Area">
+              <MappingFragment StoreEntitySet="Areas">
+                <ScalarProperty Name="Segment" ColumnName="Segment" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="ComponentTypeId" ColumnName="ComponentTypeId" />
+                <ScalarProperty Name="WorkingPeople" ColumnName="WorkingPeople" />
+                <ScalarProperty Name="Dependence" ColumnName="Dependence" />
+                <ScalarProperty Name="OrderExecution" ColumnName="OrderExecution" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="PavilionId" ColumnName="PavilionId" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="HiddenArea" ColumnName="HiddenArea" />
+                <ScalarProperty Name="MultipleOrders" ColumnName="MultipleOrders" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="AssemblyArea" ColumnName="AssemblyArea" />
+                <ScalarProperty Name="NoSplit" ColumnName="NoSplit" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TypeArea" ColumnName="TypeArea" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
